@@ -1,6 +1,4 @@
 package code;
-
-
 public class Node {
 	private int data;
 	private Node up, down, left, right;
@@ -47,7 +45,6 @@ public class Node {
 
 	public void setRight(Node right) {
 		this.right = right;
-	}
-	
-	
+	}	
 }
+
