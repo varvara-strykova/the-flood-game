@@ -3,12 +3,8 @@ package code;
 import java.util.Scanner;
 
 public class TheFloodGameTester {
-
 	public static void main(String[] args) {
-		
 		TheFloodGame TFG = new TheFloodGame(20, 20);
-		//
-		//TFG.flood(6);
 		int counter = 0;
 		int num = 0;
 		Scanner input = new Scanner(System.in);
@@ -16,9 +12,7 @@ public class TheFloodGameTester {
 		
 		System.out.println("please select a number: \n 1, 2, 3 \n 4, 5, 6");
 		System.out.println("\n");
-		
-		
-		
+	
 		do{
 			TFG.display();
 			num = input.nextInt();
@@ -44,23 +38,7 @@ public class TheFloodGameTester {
 		if(TFG.check(num) && counter>25) {
 			System.out.println("it took you " + (counter-25) + " more to win");
 		}
-		
-		
-		
-		  
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }
+
