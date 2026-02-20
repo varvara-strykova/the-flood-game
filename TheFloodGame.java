@@ -1,49 +1,42 @@
 package code;
-
-public class TheFloodGame {
-    
+public class TheFloodGame { 
     private Node root;
-    
     public TheFloodGame(int length, int width) {
     //width is the horizontal dimension
     //length is the vertical dimension
-        
         //********Creating the first node**************
         int count = 1;
         root = new Node((int)(Math.random()*6+1));
         Node temp;
-        Node cm = root;
-        //cm = column marker
-        Node rm = root;
-        //rm = row marker
+        Node column_marker = root;
+        Node row_marker = root; 
         //*********************************************
         
         //*****Creating the rest of the top row********
         for(int x = 0; x <width-1; x++) {
             temp = new Node((int)(Math.random()*6+1));
-            temp.setLeft(cm);
-            cm.setRight(temp);
-            cm = temp;
+            temp.setLeft(column_marker);
+            column_marker.setRight(temp);
+            column_marker = temp;
         }
         //*********************************************
-    
         for(int q = 0; q < length-1; q++) {
             //**********Making the first node in the row***
             temp = new Node((int)(Math.random()*6+1));
-            rm.setDown(temp);
-            temp.setUp(rm);
-            rm = temp;
-            cm = temp;
+            row_marker.setDown(temp);
+            temp.setUp(row_marker);
+            row_marker = temp;
+            column_marker = temp;
             //*********************************************
             
             //*********Making the rest of the row**********
             for(int x = 0; x < width-1; x++) {
                 temp = new Node((int)(Math.random()*6+1));
-                temp.setLeft(cm);
-                cm.setRight(temp);
+                temp.setLeft(column_marker);
+                column_marker.setRight(temp);
                 temp.setUp(cm.getUp().getRight());
                 temp.getUp().setDown(temp);
-                cm = temp;
+                column_marker = temp;
             }
             //*********************************************
         }
@@ -52,7 +45,7 @@ public class TheFloodGame {
     
     public void display() {
         Node temp = root;
-        Node rm = root;
+        Node row_marker = root;
         
         while(temp != null) {
             while(temp != null) {
@@ -67,13 +60,8 @@ public class TheFloodGame {
            
             System.out.println();
             temp = rm.getDown();
-            rm = temp;
-            
-        }
-       
-       
-        	
-        
+            row_marker = temp;
+        }  
     }
     
     public void flood(int newNumber) {
@@ -105,7 +93,7 @@ public class TheFloodGame {
     public boolean check(Node n, int number) {
     	int oldNumber = n.getData();
     	Node temp = root;
-        Node rm = root;
+        Node row_marker = root;
         
         while(temp != null) {
             while(temp != null) {
@@ -115,8 +103,8 @@ public class TheFloodGame {
                 temp = temp.getRight();  
             }
            
-            temp = rm.getDown();
-            rm = temp;
+            temp = row_marker.getDown();
+            row_marker = temp;
         }
         return true;
     }
@@ -127,6 +115,7 @@ public class TheFloodGame {
 
 
   
+
 
 
 
